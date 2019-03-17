@@ -1,5 +1,7 @@
 # Phone Finder
 
+demo : https://phones-finder.herokuapp.com/ <br /> <br />
+
 To run the app locally: <br />
 1. git clone https://github.com/agungvr/phone-finder.git <br />
 2. cd phone-finder <br />
