@@ -23,7 +23,11 @@ export function* getPhonesSearchSaga(action) {
   const filtered = yield select(getFiltered);
   const { search, brands, years } = filtered;
   if (search !== '' || brands.length > 0 || years.length > 0) {
-    const _search = phones.master.filter(item => item.name.toLowerCase().indexOf(search) > -1);
+    const _search = phones.master.filter(item => {
+      const itemData = `${item.name.toLowerCase()}`;
+      const textData = search.toLowerCase();
+      return itemData.indexOf(textData) > -1;
+    });
 
     let _brand = _search.filter(item => brands.includes(item.brand));
     if (!_brand.length) _brand = _search;
@@ -48,7 +52,11 @@ export function* getPhoneBrandFilterSaga(action) {
   const filtered = yield select(getFiltered);
   const { search, brands, years } = filtered;
   if (search !== '' || brands.length > 0 || years.length > 0) {
-    const _search = phones.master.filter(item => item.name.toLowerCase().indexOf(search) > -1);
+    const _search = phones.master.filter(item => {
+      const itemData = `${item.name.toLowerCase()}`;
+      const textData = search.toLowerCase();
+      return itemData.indexOf(textData) > -1;
+    });
 
     let _year = _search.filter(item => years.includes(item.release_year.toString()));
     if (!_year.length) _year = _search;
@@ -73,7 +81,11 @@ export function* getPhoneYearFilterSaga(action) {
   const filtered = yield select(getFiltered);
   const { search, brands, years } = filtered;
   if (search !== '' || brands.length > 0 || years.length > 0) {
-    const _search = phones.master.filter(item => item.name.toLowerCase().indexOf(search) > -1);
+    const _search = phones.master.filter(item => {
+      const itemData = `${item.name.toLowerCase()}`;
+      const textData = search.toLowerCase();
+      return itemData.indexOf(textData) > -1;
+    });
 
     let _brand = _search.filter(item => brands.includes(item.brand));
     if (!_brand.length) _brand = _search;
